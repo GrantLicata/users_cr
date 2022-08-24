@@ -8,45 +8,46 @@
     <title>Form</title>
 </head>
 <body class="bg-light">
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><strong>Users C.R.U.D</strong></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#"><strong>Users C.R.U.D</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
+                <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/show_all_users">Home</a>
-              </li>
-              <li class="nav-item">
+                </li>
+                <li class="nav-item">
                 <a class="nav-link" href="/">New User</a>
-              </li>
+                </li>
             </ul>
-          </div>
+            </div>
         </div>
-      </nav>
+    </nav>
 
-    <h1 class="h1 text-center mt-2">Add User</h1>
-    <form action="/create_user" method="post" class="container col-6 mt-4">
+    <h1 class="h1 text-center mt-2">Edit User {{ user.id }}</h1>
+    <form action="/update_user/{{ user.id }}" method="post" class="container col-6 mt-4">
         <!-- First name -->
         <div class="mb-3">
             <label for="first_name" class="form-label">First Name</label>
-            <input type="text" class="form-control" name="first_name">
+            <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}">
         </div>
         <!-- Last name -->
         <div class="mb-3">
             <label for="last_name" class="form-label">Last Name</label>
-            <input type="text" class="form-control" name="last_name">
+            <input type="text" class="form-control" name="last_name" value="{{ user.last_name }}">
         </div>
         <!-- Email -->
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email">
+            <input type="email" class="form-control" name="email" value="{{ user.email }}">
         </div>
 
-        <button type="submit" class="btn btn-primary">Add User</button>
+        <button type="submit" class="btn btn-primary">Edit User</button>
       </form>
 </body>
 </html>
