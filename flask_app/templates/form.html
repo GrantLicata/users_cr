@@ -29,7 +29,16 @@
       </nav>
 
     <h1 class="h1 text-center mt-2">Add User</h1>
-    <form action="/create_user" method="post" class="container col-6 mt-4">
+    <form action="/create_user" method="post" class="container col-3 mt-4 border p-4 bg-secondary bg-opacity-10">
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <p class="text-danger">{{message}}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
         <!-- First name -->
         <div class="mb-3">
             <label for="first_name" class="form-label">First Name</label>

@@ -37,6 +37,9 @@ def create_user():
         "last_name" : request.form["last_name"],
         "email": request.form["email"]
     }
+    if not User.validate_user(data):
+        # we redirect to the template with the form.
+        return redirect('/')
     User.save(data)
     return redirect('/show_all_users')
 
