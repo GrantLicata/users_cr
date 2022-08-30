@@ -31,28 +31,49 @@
     <h1 class="h1 text-center mt-2">Add User</h1>
     <form action="/create_user" method="post" class="container col-3 mt-4 border p-4 bg-secondary bg-opacity-10">
 
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <p class="text-danger">{{message}}</p>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+
 
         <!-- First name -->
         <div class="mb-3">
             <label for="first_name" class="form-label">First Name</label>
             <input type="text" class="form-control" name="first_name">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message == "First name is required." %}
+                  <p class="text-danger">{{message}}</p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
         </div>
         <!-- Last name -->
         <div class="mb-3">
             <label for="last_name" class="form-label">Last Name</label>
             <input type="text" class="form-control" name="last_name">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message == "Last name is required." %}
+                  <p class="text-danger">{{message}}</p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
         </div>
         <!-- Email -->
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" name="email">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message == "Email is required" or message == "Invalid email address!" %}
+                  <p class="text-danger">{{message}}</p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
         </div>
 
         <button type="submit" class="btn btn-primary">Add User</button>
